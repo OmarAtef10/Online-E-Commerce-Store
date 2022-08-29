@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "braintree-web-drop-in-react": "^1.2.1",
+    "react-router-dom": "^4.3.1"
+  }
+}
