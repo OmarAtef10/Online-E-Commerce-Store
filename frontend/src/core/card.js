@@ -1,6 +1,8 @@
 import React from "react";
 import ImageHelper from "./helper/imageHelper";
 import {Redirect} from "react-router-dom";
+import {addItemToCart, removeItem, cartEmpty,loadCart} from "./helper/cartHelper";
+
 
 let isAuthenticated = true
 const Card = ({
@@ -16,6 +18,8 @@ const Card = ({
 
     const addToCart = () => {
         if (isAuthenticated) {
+            addItemToCart(product, () => {
+            })
             console.log("Added To Cart")
         } else {
             console.log("Login First")
@@ -43,6 +47,7 @@ const Card = ({
                 <div className="col-12">
                     <button
                         onClick={() => {
+                            removeItem(product.id)
                         }}
                         className="btn btn-block btn-outline-danger mt-2 mb-2"
                     >
@@ -64,7 +69,7 @@ const Card = ({
                 </p>
                 <p className="btn btn-success rounded  btn-sm px-4">{prodPrice}</p>
                 <div className="row">
-                    {showAddtoCart(addToCart)}
+                    {showAddtoCart(add_Cart)}
                     {showRemoveFromCart(remove_Cart)}
                 </div>
             </div>
