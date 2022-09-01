@@ -154,3 +154,4 @@ AUTH_USER_MODEL = "user.CustomUser"
 STATICFILES_DIRS = [
     'frontend/build/static'
 ]
+LOGIN_URL = 'signin/'

@@ -1,24 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 import ImageHelper from "./helper/imageHelper";
 import {Redirect} from "react-router-dom";
-import {addItemToCart, removeItem, cartEmpty,loadCart} from "./helper/cartHelper";
+import {addItemToCart, removeItem, cartEmpty, loadCart} from "./helper/cartHelper";
+import {isAuthenticated} from "../auth/helper";
 
-
-let isAuthenticated = true
 const Card = ({
                   product,
                   add_Cart = true,
                   remove_Cart = false,
+                  reload = undefined,
+                  setReload = f => f,
 
               }) => {
+
+    const [redirect, setRedirect] = useState(false)
+
 
     const prodName = product ? product.name : "Default Name"
     const prodDesc = product ? product.description : "Default Description"
     const prodPrice = product ? product.price : "Default Price (NONE lol)"
 
     const addToCart = () => {
-        if (isAuthenticated) {
+        if (isAuthenticated()) {
             addItemToCart(product, () => {
+                setRedirect(true)
             })
             console.log("Added To Cart")
         } else {
@@ -48,6 +53,7 @@ const Card = ({
                     <button
                         onClick={() => {
                             removeItem(product.id)
+                            setReload(!reload)
                         }}
                         className="btn btn-block btn-outline-danger mt-2 mb-2"
                     >

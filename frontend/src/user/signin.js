@@ -67,8 +67,8 @@ const Signin = () => {
             .then(data => {
                 console.log("DATA", data)
                 if (data.Token) {
-                    let sessionToken = data.Token;
-                    authenticate(sessionToken, () => {
+                    //let sessionToken = data.Token;
+                    authenticate(data, () => {
                         console.log("TOKEN ADDED")
                     })
                     setValues({

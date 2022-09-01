@@ -19,13 +19,14 @@ from django.contrib import admin
 from django.urls import path, include
 import frontend.build
 from django.views.generic import TemplateView
+from .views import signin, signup, home
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('api-auth/', include('rest_framework.urls')),
                   path('api/', include('api.urls')),
-                  path('', TemplateView.as_view(template_name="index.html")),
-                  path('signup/', TemplateView.as_view(template_name="index.html")),
-                  path('signin/', TemplateView.as_view(template_name="index.html")),
+                  path('', home),
+                  path('signup/', signup),
+                  path('signin/', signin),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

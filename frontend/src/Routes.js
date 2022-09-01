@@ -1,11 +1,12 @@
 import React from "react";
-import {BrowserRouter, Switch, Link, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Home from "./core/home";
-import privateRoutes from "./auth/helper/privateRoutes";
-import signup from "../src/user/signup";
+import PrivateRoutes from "./auth/helper/privateRoutes";
 import dashboard from "./user/dashboard";
 import Signup from "../src/user/signup";
 import Signin from "./user/signin";
+import Cart from "./core/cart";
+
 
 const Routes = () => {
     return (
@@ -14,8 +15,9 @@ const Routes = () => {
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/signup" component={Signup}/>
                 <Route exact path="/signin" component={Signin}/>
+                <PrivateRoutes path="/user/dashboard" exact  component={dashboard}/>
+                <PrivateRoutes path="/cart" exact component={Cart}/>
 
-                <privateRoutes exact path="/user/dashboard" component={dashboard}/>
             </Switch>
         </BrowserRouter>
     );

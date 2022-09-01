@@ -19,7 +19,7 @@ gateway = braintree.BraintreeGateway(
 def validate_session(id, token):
     UserModel = get_user_model()
     try:
-        user = UserModel.object.get(pk=id)
+        user = UserModel.objects.get(pk=id)
         if user.session_token == token:
             return True
 
@@ -39,11 +39,11 @@ def generate_token(request, id, token):
 
 
 @csrf_exempt
-def process_payment(request, token, id):
+def process_payment(request, id, token):
     if not validate_session(id, token):
         return JsonResponse({"Error": "Invalid Session Login Again!"})
 
-    nonce_from_client = request.POST['PaymentMethodNonce']
+    nonce_from_client = request.POST['paymentMethodNonce']
     amount_from_client = request.POST['amount']
 
     result = gateway.transaction.sale({

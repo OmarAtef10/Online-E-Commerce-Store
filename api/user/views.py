@@ -40,8 +40,8 @@ def signin(request):
             user_dic = UserModel.objects.filter(email=username).values().first()
             user_dic.pop('password')
 
-            if user.session_token != '0':
-                user.session_token = '0'
+            if user.session_token != "0":
+                user.session_token = "0"
                 user.save()
                 return JsonResponse({"Error": "Previous Session Exists!!"})
 
