@@ -6,4 +6,4 @@ from .models import Order
 class OrderSeralizer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Order
-        fields = ("user")
+        fields = ("user", "product_names", "transaction_id", "total_amount", "created_at",)

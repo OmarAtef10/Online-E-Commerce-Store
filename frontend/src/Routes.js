@@ -6,6 +6,7 @@ import dashboard from "./user/dashboard";
 import Signup from "../src/user/signup";
 import Signin from "./user/signin";
 import Cart from "./core/cart";
+import Dashboard from "./user/dashboard";
 
 
 const Routes = () => {
@@ -15,7 +16,7 @@ const Routes = () => {
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/signup" component={Signup}/>
                 <Route exact path="/signin" component={Signin}/>
-                <PrivateRoutes path="/user/dashboard" exact  component={dashboard}/>
+                <PrivateRoutes path="/user/dashboard" exact  component={Dashboard}/>
                 <PrivateRoutes path="/cart" exact component={Cart}/>
 
             </Switch>

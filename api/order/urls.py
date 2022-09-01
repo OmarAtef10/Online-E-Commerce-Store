@@ -8,5 +8,6 @@ router.register(r'', views.OrderViewSet)
 
 urlpatterns = [
     path('add/<str:id>/<str:token>/', views.add, name='order-add'),
-    path('', include(router.urls))
+    path('orders/<str:id>/<str:token>/', views.userOrders, name="user-orders"),
+    path('', include(router.urls)),
 ]

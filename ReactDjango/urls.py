@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 import frontend.build
 from django.views.generic import TemplateView
-from .views import signin, signup, home
+from .views import signin, signup, home, cart, dashboard
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
@@ -28,5 +28,7 @@ urlpatterns = [
                   path('', home),
                   path('signup/', signup),
                   path('signin/', signin),
+                  path("user/dashboard/", dashboard),
+                  path("cart/", cart)
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
